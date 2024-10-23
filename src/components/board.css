@@ -1,6 +1,7 @@
 .board-component{
     background-color: #F4F5F8;
     height: 96vh;
+    width: 100%;
     padding: 15px;
     display: flex;
     flex-direction: row;
@@ -13,10 +14,21 @@
 }
 
 .board-column-title{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
     margin-bottom: 10px;
     font-size: 13px;
 }
 
+.addoptions{
+    align-items: center;
+    position: absolute;  /* Position the child absolutely */
+    right: 5px;        /* Distance from the right edge */
+    bottom: 10px;
+}
 .card-list{
      display: flex;
      flex-direction: column;

@@ -1,5 +1,5 @@
 import "./card.css";
-import dotmenu from "../assets/dotmenu.svg";
+import Nopriority from "../assets/Nopriority.svg";
 import ImgHighPriority from "../assets/ImgHighPriority.svg";
 import ImgMediumPriority from "../assets/ImgMediumPriority.svg";
 import ImgLowPriority from "../assets/ImgLowPriority.svg";
@@ -8,7 +8,7 @@ import Backlog from "../assets/Backlog.svg";
 import Todo from "../assets/Todo.svg";
 import Inprogress from "../assets/Inprogress.svg";
 import Done from "../assets/Done.svg";
-// import To-Do from "module";
+
 
 const Card = ({ id, title, tag, userid, status, priority }) => {
   var settag;
@@ -17,7 +17,7 @@ const Card = ({ id, title, tag, userid, status, priority }) => {
     [3, ImgHighPriority],
     [2, ImgMediumPriority],
     [1, ImgLowPriority],
-    [0, dotmenu]
+    [0, Nopriority]
   ]);
 
   const completionMap = new Map(
@@ -43,7 +43,7 @@ const Card = ({ id, title, tag, userid, status, priority }) => {
         <div className="card-priority-holders">
           <img src={priorityStatusIcon} alt="priority-status" />
         </div>
-        <div className="card-tag-holders">{settag}</div>
+        <div className="card-tag-holders"><span className="dot"></span>{settag}</div>
       </div>
     </div>
   );

@@ -1,6 +1,20 @@
 import './board.css';
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
+import Nopriority from "../assets/Nopriority.svg";
+import dotmenu from "../assets/dotmenu.svg";
+import ImgHighPriority from "../assets/ImgHighPriority.svg";
+import ImgMediumPriority from "../assets/ImgMediumPriority.svg";
+import ImgLowPriority from "../assets/ImgLowPriority.svg";
+import SVGUrgentPrioritycolour from "../assets/SVGUrgentPrioritycolour.svg";
+import Backlog from "../assets/Backlog.svg";
+import Todo from "../assets/Todo.svg";
+import Inprogress from "../assets/Inprogress.svg";
+import Done from "../assets/Done.svg";
+import profileIcon from "../assets/profileIcon.svg";
+import Add from "../assets/Add.svg";
+
+
 const Board = () => {
   const [cards, setCards] = useState([]);
   const [users, setUsers] = useState([]);
@@ -55,7 +69,7 @@ const Board = () => {
   };
 
   const getDisplayTitle = (key) => {
-    // Check if the key is a number (for priority)
+    
     const priority = parseInt(key, 10);
     if (!isNaN(priority)) {
       switch (priority) {
@@ -70,24 +84,57 @@ const Board = () => {
         case 0:
           return 'No Priority';
         default:
-          return priority; // Return the priority value itself if not in the cases
+          return priority;
       }
     }
   
-    // If the key is not a number, treat it as a status string
     switch (key) {
       case "Todo":
-        return "Todo"; // Replace with your actual Todo icon or string
+        return "Todo"; 
       case "Inprogress":
-        return "In-progress"; // Replace with your actual Inprogress icon or string
+        return "In-progress"; 
       case "Backlog":
-        return "Backlog"; // Replace with your actual Backlog icon or string
+        return "Backlog"; 
       case "Done":
-        return "Done"; // Replace with your actual Done icon or string
+        return "Done"; 
       default:
-        return key; // Return the status itself if it doesn't match any case
+        return key; 
     }
   };
+  const getDisplayTitleImage=(key)=>{
+    const priority = parseInt(key, 10);
+    if (!isNaN(priority)) {
+      switch (priority) {
+        case 4:
+          return SVGUrgentPrioritycolour;
+        case 3:
+          return ImgHighPriority ;
+        case 2:
+          return ImgMediumPriority;
+        case 1:
+          return ImgLowPriority ;
+        case 0:
+          return Nopriority;
+        default:
+          return profileIcon; 
+         
+      }
+    }
+  
+    switch (key) {
+      case "Todo":
+        return Todo; 
+      case "In progress":
+        return Inprogress; 
+      case "Backlog":
+        return Backlog; 
+      case "Done":
+        return Done; 
+      default:
+        return profileIcon; 
+      
+    }
+  }
   
   if (loading) return <div>Loading...</div>;
 
@@ -98,20 +145,26 @@ const Board = () => {
   <div id="board" className="board-component">
      {Object.keys(groupedCards).map((groupKey) => {
     
-    const displayTitle = getDisplayTitle(groupKey); // Get display title for either priority or status
-
+    const displayTitle = getDisplayTitle(groupKey); 
+    const displayProfile =getDisplayTitleImage(groupKey);
 
     return (
       <div key={groupKey} className="board-column">
         <div className='board-column-title'>
-          {displayTitle} 
+          <img src= {displayProfile} alt="priority-status" />
+          <p>{displayTitle} </p>
+          <div className="addoptions">
+            <img src= {Add} alt="priority-status" />
+            <img src= {dotmenu} alt="priority-status" />
+          </div>
         </div>
+       
         <div className="card-list">
           {groupedCards[groupKey].map((card) => (
             <Card
               key={card.id}
               id={card.id}
-              title={card.title} // Keep the original card title
+              title={card.title} 
               tag={card.tag}
               userid={card.userid}
               status={card.status}

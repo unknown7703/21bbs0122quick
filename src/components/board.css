@@ -2,5 +2,23 @@
     background-color: #F4F5F8;
     height: 96vh;
     padding: 15px;
-    
+    display: flex;
+    flex-direction: row;
+    gap:50px
+}
+
+.board-column{
+    min-width: 18%;
+    max-width: 18%;
+}
+
+.board-column-title{
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.card-list{
+     display: flex;
+     flex-direction: column;
+     gap: 8px;
 }

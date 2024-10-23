@@ -3,7 +3,8 @@
     flex-direction: column;
     padding: 10px 10px;
     background-color: #FFFFFF;
-    width: 18%;
+    width: 100%;
+  
     gap: 3px;
     border: none;
     border-radius: 5px;
@@ -23,8 +24,15 @@
     display: flex;
     margin-bottom: 8px;
     flex-direction: row;
-    font-size: 15px;
+    font-size: 12px;
     gap:5px;
+    display: -webkit-box;         /* Enables the use of -webkit-line-clamp */
+    -webkit-box-orient: vertical; /* Specifies the orientation of the box */
+    overflow: hidden;             /* Hides overflow text */
+    -webkit-line-clamp: 2;        /* Limits to 2 lines */
+    max-height: 3em;              /* Sets a maximum height to match 2 lines */
+    font-size: 12px;              /* Sets the font size */
+    line-height: 1.5;   
 }
 
 .card-tags{
